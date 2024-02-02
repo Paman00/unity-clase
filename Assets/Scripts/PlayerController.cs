@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
-public class playerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    public static PlayerController sharedInstance;
+
     private Rigidbody2D rigidBodyPersonaje;
     public float desplazamientoFuerza = 500;
     public float fuerzaSalto = 7f;
@@ -18,6 +21,7 @@ public class playerController : MonoBehaviour
 
     void Awake()
     {
+        sharedInstance = this;
         rigidBodyPersonaje = GetComponent<Rigidbody2D>();
         animPersonaje = GetComponentInChildren<Animator>();
     }
@@ -77,5 +81,11 @@ public class playerController : MonoBehaviour
     public bool EstaTocandoSuelo()
     {
         return Physics2D.Raycast(transform.position, Vector2.down, 1.5f, sueloLayer);
+    }
+
+    public void Kill() {
+        GameManager.sharedInstance.GameOver();
+
+        Debug.Log("Han matado al jugador :(");
     }
 }
