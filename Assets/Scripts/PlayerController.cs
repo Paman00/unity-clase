@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     public void Kill() {
         GameManager.sharedInstance.GameOver();
-
-        Debug.Log("Han matado al jugador :(");
+        animPersonaje.SetTrigger("morir");
+        System.Diagnostics.Debug.WriteLine("Han matado al jugador :("); // No funciona
     }
 }

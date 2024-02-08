@@ -12,11 +12,22 @@ public class CamaraMovement : MonoBehaviour {
     }
 
     void Update() {
-        transform.position = new Vector3(
-            playerTransform.position.x, 
-            transform.position.y, 
-            playerTransform.position.z + desplazamiento.z 
-        );        
+        if (GameManager.sharedInstance.currentGameState != GameState.gameOver)
+        {
+            transform.position = new Vector3(
+                playerTransform.position.x,
+                transform.position.y,
+                playerTransform.position.z + desplazamiento.z
+            );
+        }
+        else
+        {
+            transform.position = new Vector3(
+                playerTransform.position.x, 
+                playerTransform.position.y, 
+                playerTransform.position.z + desplazamiento.z
+            );
+        }
     }
 
     private void Awake() {

@@ -11,7 +11,7 @@ public class KillTrigger : MonoBehaviour {
         
     }
 
-    private void onTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         // if (collision.tag == "Player") {
         if (collision.CompareTag("Player")) {
             if(GameManager.sharedInstance.currentGameState != GameState.gameOver)
